@@ -10,48 +10,50 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
+    <header class="separacion_contenedores">
         <h1>Split Bills</h1>
     </header>
 
-    <main>
+    <main class="separacion_contenedores">
         <form action="">
-            <div>
+            <div class="inputs">
                 <label for="usuario1">Usuario 1</label>
                 <input id="usuario1" type="text" name="usuario1" placeholder="Sueldo Usuario 1">
             </div>
-
-            <div>
+            
+            <div style="margin-top: 25px;">
                 <label for="usuario2">Usuario 2</label>
                 <input id="usuario2" type="text" name="usuario2" placeholder="Sueldo Usuario 2">
             </div>
         </form>
-
-        <div>
-            <button>Agregar nueva factura</button>
-
-            <div>
-                <h2>Sus facturas:</h2>
-
-                <div>
-                    <h3>Arriendo</h3>
-
-                    <div>
-                        <p>Usuario 1</p>
-                        <hr>
-                        <p>$2.100</p>
-                    </div>
-
-                    <div>
-                        <p>Usuario 2</p>
-                        <hr>
-                        <p>$1.900</p>
-                    </div>
-
-                    <div>
-                        <p>Total</p>
-                        <hr>
-                        <p>$4.000</p>
+        
+        <div class="cont_resultados">
+            <div class="organizador_res">
+                <button class="separacion_contenedores">Agregar nueva factura</button>
+    
+                <div class="separacion_contenedores">
+                    <h2>Sus facturas:</h2>
+    
+                    <div class="resultado_individual">
+                        <div class="header_resultado">
+                            <h3>Arriendo</h3>
+                            <a href="">x</a>
+                        </div>
+    
+                        <div class="resultados" style="margin-top: 25px;">
+                            <p>Usuario 1</p>
+                            <p>$2.100</p>
+                        </div>
+    
+                        <div class="resultados" style="margin-top: 20px;">
+                            <p>Usuario 2</p>
+                            <p>$1.900</p>
+                        </div>
+    
+                        <div class="resultado_total">
+                            <p>Total</p>
+                            <p>$4.000</p>
+                        </div>
                     </div>
                 </div>
             </div>
