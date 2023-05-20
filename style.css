@@ -73,7 +73,7 @@ form input::placeholder {
     margin: auto;
 }
 
-.organizador_res button {
+button {
     width: 60vw;
     height: 40px;
     margin-left: 8vw;
@@ -154,4 +154,74 @@ h2 {
     font-weight: bold;
     border-radius: 10px;
     background-color: #EAEAEA;
+}
+
+.ocultar_modal {
+    display: none;
+}
+
+.mostrar_modal {
+    display: flex;
+}
+
+.modal {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(1, 17, 38, 0.3);
+}
+
+.cont_modal {
+    width: 88vw;
+    border-radius: 30px;
+    background-color: white;
+    box-shadow: 0px 0px 30px rgba(1, 17, 38, 0.1);
+}
+
+.header_agregar {
+    padding: 25px 25px 0 25px;
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header_agregar h3 {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.header_agregar a {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    text-decoration: none;
+    color: #011126;
+    text-align: center;
+    font-size: 0;
+    background-image: url(img/cerrar.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.cont_modal label {
+    display: none;
+}
+
+.cont_modal form {
+    margin-top: 25px;
+}
+
+.cont_modal input {
+    background-color: #EAEAEA;
+}
+
+.cont_modal button {
+    margin: 25px 14vw;
 }
