@@ -9,6 +9,53 @@
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
 <body>
+    <header>
+        <h1>Split Bills</h1>
+    </header>
+
+    <main>
+        <form action="">
+            <div>
+                <label for="usuario1">Usuario 1</label>
+                <input id="usuario1" type="text" name="usuario1" placeholder="Sueldo Usuario 1">
+            </div>
+
+            <div>
+                <label for="usuario2">Usuario 2</label>
+                <input id="usuario2" type="text" name="usuario2" placeholder="Sueldo Usuario 2">
+            </div>
+        </form>
+
+        <div>
+            <button>Agregar nueva factura</button>
+
+            <div>
+                <h2>Sus facturas:</h2>
+
+                <div>
+                    <h3>Arriendo</h3>
+
+                    <div>
+                        <p>Usuario 1</p>
+                        <hr>
+                        <p>$2.100</p>
+                    </div>
+
+                    <div>
+                        <p>Usuario 2</p>
+                        <hr>
+                        <p>$1.900</p>
+                    </div>
+
+                    <div>
+                        <p>Total</p>
+                        <hr>
+                        <p>$4.000</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
     
 </body>
 </html>
