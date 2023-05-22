@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SPLIT BILLS</title>
 
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,12 +14,12 @@
         <h1>Split Bills</h1>
     </header>
 
-    <main class="separacion_contenedores">
-        <div class="modal ocultar_modal">
+    <main id="main" class="separacion_contenedores">
+        <div class="modal" v-show="modal">
             <div class="cont_modal">
                 <div class="header_agregar">
                     <h3>Agrega una factura</h3>
-                    <a href="">x</a>
+                    <a href="" @click="cerrar">x</a>
                 </div>
     
                 <form action="">
@@ -30,7 +30,7 @@
         
                     <div style="margin-top: 25px;">
                         <label for="valor">Valor</label>
-                        <input id="valor" type="text" name="valor" placeholder="Valor">
+                        <input id="valor" type="number" name="valor" placeholder="Valor">
                     </div>
                 </form>
     
@@ -39,19 +39,19 @@
         </div>
         <form action="">
             <div>
-                <label for="usuario1">Usuario 1</label>
-                <input id="usuario1" type="text" name="usuario1" placeholder="Sueldo Usuario 1">
+                <label for="usuario1">{{usuario1}}</label>
+                <input id="usuario1" type="number" name="usuario1" placeholder="Sueldo Usuario 1" v-model="sueldoU1">
             </div>
             
             <div style="margin-top: 25px;">
-                <label for="usuario2">Usuario 2</label>
-                <input id="usuario2" type="text" name="usuario2" placeholder="Sueldo Usuario 2">
+                <label for="usuario2" v-once>{{usuario2}}</label>
+                <input id="usuario2" type="number" name="usuario2" placeholder="Sueldo Usuario 2" v-model="sueldoU2">
             </div>
         </form>
         
         <div class="cont_resultados">
             <div class="organizador_res">
-                <button class="separacion_contenedores">Agregar nueva factura</button>
+                <button class="separacion_contenedores" @click="agregarNueva">Agregar nueva factura</button>
     
                 <div class="separacion_contenedores">
                     <h2>Sus facturas:</h2>
@@ -81,6 +81,7 @@
             </div>
         </div>
     </main>
-    
+
+    <script src="script.js"></script>
 </body>
 </html>
