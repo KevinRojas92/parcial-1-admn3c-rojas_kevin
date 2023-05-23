@@ -19,7 +19,9 @@ let app = new Vue ({
 
         factura: {
             razon: "",
-            precio: 0
+            precio: 0,
+            precioUsuario1: 0,
+            precioUsuario2: 0
         },
         allFacturas: []
     },
@@ -41,6 +43,8 @@ let app = new Vue ({
         agregar: function () {
             this.factura.razon = this.motivo;
             this.factura.precio = parseFloat(this.valor);
+            this.factura.precioUsuario1 = (this.factura.precio * porcentajeSueldoU1) / 100;
+            this.factura.precioUsuario2 = (this.factura.precio * porcentajeSueldoU2) / 100;
 
             this.allFacturas.push(this.factura);
 
