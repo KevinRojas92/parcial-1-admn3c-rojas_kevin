@@ -56,7 +56,7 @@
                 <div class="separacion_contenedores">
                     <h2>Sus facturas:</h2>
     
-                    <p v-if="allFacturas.length == 0">Aún no has agregado facturas.</p>
+                    <p style="margin-top: 20px;" v-if="allFacturas.length == 0">Aún no has agregado facturas.</p>
                     <div class="resultado_individual" v-for="i in allFacturas" v-else>
                         <div class="header_resultado">
                             <h3>{{i.razon}}</h3>
@@ -65,12 +65,12 @@
     
                         <div class="resultados" style="margin-top: 25px;">
                             <p>{{usuario1}}</p>
-                            <p>$2.100</p>
+                            <p>${{i.precioUsuario1}}</p>
                         </div>
     
                         <div class="resultados" style="margin-top: 20px;">
                             <p>{{usuario2}}</p>
-                            <p>$1.900</p>
+                            <p>${{i.precioUsuario2}}</p>
                         </div>
     
                         <div class="resultado_total">
