@@ -60,7 +60,7 @@
                     <div class="resultado_individual" v-for="i in allFacturas" v-else>
                         <div class="header_resultado">
                             <h3>{{i.razon}}</h3>
-                            <a href="">x</a>
+                            <a href="" @click="borrar">x</a>
                         </div>
     
                         <div class="resultados" style="margin-top: 25px;">
