@@ -25,16 +25,16 @@
                 <form action="">
                     <div>
                         <label for="motivo">Motivo</label>
-                        <input id="motivo" type="text" name="motivo" placeholder="Motivo">
+                        <input id="motivo" type="text" name="motivo" :placeholder="{motivo}" v-model="motivo">
                     </div>
         
                     <div style="margin-top: 25px;">
                         <label for="valor">Valor</label>
-                        <input id="valor" type="number" name="valor" placeholder="Valor">
+                        <input id="valor" type="numbe" name="valor" placeholder="Valor" v-model="valor">
                     </div>
                 </form>
     
-                <button>Agregar</button>
+                <button @click="agregar">Agregar</button>
             </div>
         </div>
         <form action="">
@@ -56,25 +56,26 @@
                 <div class="separacion_contenedores">
                     <h2>Sus facturas:</h2>
     
-                    <div class="resultado_individual">
+                    <p v-if="allFacturas.length == 0">Aún no has agregado facturas.</p>
+                    <div class="resultado_individual" v-for="i in allFacturas" v-else>
                         <div class="header_resultado">
-                            <h3>Arriendo</h3>
+                            <h3>{{i.razon}}</h3>
                             <a href="">x</a>
                         </div>
     
                         <div class="resultados" style="margin-top: 25px;">
-                            <p>Usuario 1</p>
+                            <p>{{usuario1}}</p>
                             <p>$2.100</p>
                         </div>
     
                         <div class="resultados" style="margin-top: 20px;">
-                            <p>Usuario 2</p>
+                            <p>{{usuario2}}</p>
                             <p>$1.900</p>
                         </div>
     
                         <div class="resultado_total">
                             <p>Total</p>
-                            <p>$4.000</p>
+                            <p>{{i.precio}}</p>
                         </div>
                     </div>
                 </div>
