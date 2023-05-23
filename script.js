@@ -55,6 +55,9 @@ let app = new Vue ({
 
         cerrar: function () {
             this.modal= false;
+        },
+
+        borrar: function () {
         }
     }
 });
