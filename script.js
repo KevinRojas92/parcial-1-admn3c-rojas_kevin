@@ -2,18 +2,17 @@
 
 let sueldoTotal, porcentajeSueldoU1, porcentajeSueldoU2;
 
-/*
 Vue.component ('sueldos-usuarios', {
     template: `
         <form action="">
             <div>
                 <label for="usuario1">{{usuario1}}</label>
-                <input id="usuario1" type="number" name="usuario1" placeholder="Sueldo Usuario 1" v-model="sueldoU1">
+                <input id="usuario1" type="number" name="usuario1" placeholder="Sueldo Usuario 1" v-model="sueldoU1" @change="guardarSueldos">
             </div>
             
             <div style="margin-top: 25px;">
                 <label for="usuario2" v-once>{{usuario2}}</label>
-                <input id="usuario2" type="number" name="usuario2" placeholder="Sueldo Usuario 2" v-model="sueldoU2">
+                <input id="usuario2" type="number" name="usuario2" placeholder="Sueldo Usuario 2" v-model="sueldoU2" @change="guardarSueldos">
             </div>
         </form>
     `,
@@ -22,12 +21,18 @@ Vue.component ('sueldos-usuarios', {
 
     data: function () {
         return {
-            sueldoU1: "Sueldo Usuario 1",
-            sueldoU2: "Sueldo Usuario 2",
+            sueldoU1: "",
+            sueldoU2: "",
+        }
+    },
+
+    methods: {
+        guardarSueldos () {
+            console.log(this.sueldoU1);
+            console.log(this.sueldoU2);
         }
     }
 });
-*/
 
 let app = new Vue ({
     el: '#main',
@@ -36,13 +41,13 @@ let app = new Vue ({
         usuario1: 'Nombre Usuario 1',
         usuario2: 'Nombre Usuario 2',
 
-        sueldoU1: "Sueldo Usuario 1",
-        sueldoU2: "Sueldo Usuario 2",
+        sueldoU1: "",
+        sueldoU2: "",
 
         modal: false,
 
-        motivo: "Motivo",
-        valor: "Valor",
+        motivo: "",
+        valor: "",
 
         factura: {},
 
