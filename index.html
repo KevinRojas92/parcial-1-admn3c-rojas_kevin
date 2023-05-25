@@ -25,7 +25,7 @@
                 <form action="">
                     <div>
                         <label for="motivo">Motivo</label>
-                        <input id="motivo" type="text" name="motivo" :placeholder="{motivo}" v-model="motivo">
+                        <input id="motivo" type="text" name="motivo" placeholder="motivo" v-model="motivo">
                     </div>
         
                     <div style="margin-top: 25px;">
@@ -38,21 +38,8 @@
             </div>
         </div>
 
-        <!--
-            <sueldos-usuarios :usuario1="usuario1" :usuario2="usuario2"></sueldos-usuarios>
-        -->
+        <sueldos-usuarios :usuario1="usuario1" :usuario2="usuario2" :sueldo-u1="sueldoU1" :sueldo-u2="sueldoU2"></sueldos-usuarios>
 
-        <form action="">
-            <div>
-                <label for="usuario1">{{usuario1}}</label>
-                <input id="usuario1" type="number" name="usuario1" placeholder="Sueldo Usuario 1" v-model="sueldoU1">
-            </div>
-            
-            <div style="margin-top: 25px;">
-                <label for="usuario2" v-once>{{usuario2}}</label>
-                <input id="usuario2" type="number" name="usuario2" placeholder="Sueldo Usuario 2" v-model="sueldoU2">
-            </div>
-        </form>
         
         <div class="cont_resultados">
             <div class="organizador_res">
@@ -100,4 +87,7 @@
 3. Como puedo hacer que salga el placeholder y no el v-model en los inputs.
 
 4. como detectar cuando actualizo el valor de los imputs del sueldo de los usuarios.
+
+
+borrar array con metodo index y con el metodo slice
 -->
