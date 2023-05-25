@@ -44,16 +44,33 @@ let app = new Vue ({
         motivo: "Motivo",
         valor: "Valor",
 
-        factura: {
-            razon: "",
-            precio: 0,
-            precioUsuario1: 0,
-            precioUsuario2: 0
-        },
-        allFacturas: []
+        factura: {},
+
+        allFacturas: [],
+
+        sueldos: {}
+    },
+
+    mounted () {
+        this.guardarSueldos();
+    },
+
+    updated () {
+        console.log('Se actualizó');
+        this.guardarSueldos();
     },
 
     methods: {
+        guardarSueldos () {
+            if (!isNaN(this.sueldoU1)) {
+                this.sueldos.usuario1 = this.sueldoU1;
+            } else if (!isNaN(this.sueldoU2)) {
+                this.sueldos.usuario2 = this.sueldoU2;
+            } else {
+                console.log('No es un número');
+            }
+        },
+
         calcularPorcentajes () {
             sueldoTotal = parseFloat(this.sueldoU1) + parseFloat(this.sueldoU2);
 
