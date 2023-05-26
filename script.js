@@ -42,6 +42,17 @@ Vue.component ('sueldos-usuarios', {
         }
     },
 
+    mounted () {
+        if (localStorage.length > 0) {
+            this.sueldosLocal = JSON.parse(localStorage.getItem("sueldos"));
+
+            this.sueldoU1 = this.sueldosLocal.sueldoU1;
+            this.sueldoU2 = this.sueldosLocal.sueldoU2;
+        } else {
+            console.log("no hay datos");
+        }
+    },
+
     methods: {
         guardarSueldos () {
             if (this.sueldoU1 != "Sueldo Usuario 1" || this.sueldoU2 != "Sueldo Usuario 2") {
@@ -53,14 +64,6 @@ Vue.component ('sueldos-usuarios', {
 
                     this.obetenerLocalData ();
                 }
-            }
-        },
-
-        obetenerLocalData () {
-            if (localStorage.length > 0) {
-                this.sueldosLocal = JSON.parse(localStorage.getItem("sueldos"));
-
-                console.log(this.sueldosLocal);
             }
         }
     }
@@ -94,8 +97,6 @@ let app = new Vue ({
 
             this.sueldoU1 = this.sueldosLocal.sueldoU1;
             this.sueldoU2 = this.sueldosLocal.sueldoU2;
-            console.log(this.sueldoU1);
-            console.log(this.sueldoU2);
         } else {
             console.log("no hay datos");
         }
