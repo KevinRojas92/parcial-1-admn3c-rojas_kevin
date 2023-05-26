@@ -118,7 +118,7 @@ h2 {
     font-weight: 500;
 }
 
-.header_resultado a {
+.header_resultado button {
     display: inline-block;
     width: 10px;
     height: 10px;
