@@ -136,10 +136,19 @@ let app = new Vue ({
         if (localStorage.length > 0) {
             this.sueldosLocal = JSON.parse(localStorage.getItem("sueldos"));
 
-            this.sueldoU1 = this.sueldosLocal.sueldoU1;
-            this.sueldoU2 = this.sueldosLocal.sueldoU2;
+            let facturasStorage = JSON.parse(localStorage.getItem("facturas"));
+
+            if (this.sueldosLocal.length > 0) {
+                this.sueldoU1 = this.sueldosLocal.sueldoU1;
+                this.sueldoU2 = this.sueldosLocal.sueldoU2;
+            } else if (facturasStorage.length > 0) {
+                facturasStorage.forEach(element => {
+                    this.allFacturas.push(element);
+                    console.log(facturasStorage);
+                });
+            }
         } else {
-            console.log("no hay datos");
+            console.log("No hay datos en LocalStorage");
         }
     },
 
