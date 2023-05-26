@@ -4,15 +4,27 @@ let sueldoTotal, porcentajeSueldoU1, porcentajeSueldoU2;
 
 Vue.component ('sueldos-usuarios', {
     template: `
-        <form action="">
+        <form action="" v-if="sueldoU1 =='Sueldo Usuario 1' && sueldoU2 =='Sueldo Usuario 2'">
             <div>
                 <label for="usuario1">{{usuario1}}</label>
-                <input id="usuario1" type="number" name="usuario1" placeholder="Sueldo Usuario 1" v-model="sueldoU1" @change="guardarSueldos">
+                <input id="usuario1" type="number" name="usuario1" :placeholder="sueldoU1" v-model="sueldoU1" @change="guardarSueldos">
             </div>
             
             <div style="margin-top: 25px;">
                 <label for="usuario2" v-once>{{usuario2}}</label>
-                <input id="usuario2" type="number" name="usuario2" placeholder="Sueldo Usuario 2" v-model="sueldoU2" @change="guardarSueldos">
+                <input id="usuario2" type="number" name="usuario2" :placeholder="sueldoU2" v-model="sueldoU2" @change="guardarSueldos">
+            </div>
+        </form>
+
+        <form action="" v-else>
+            <div>
+                <label for="usuario1">{{usuario1}}</label>
+                <input id="usuario1" type="number" name="usuario1" :placeholder="sueldosLocal.sueldoU1" v-model="sueldoU1" @change="guardarSueldos">
+            </div>
+            
+            <div style="margin-top: 25px;">
+                <label for="usuario2" v-once>{{usuario2}}</label>
+                <input id="usuario2" type="number" name="usuario2" :placeholder="sueldosLocal.sueldoU2" v-model="sueldoU2" @change="guardarSueldos">
             </div>
         </form>
     `,
@@ -21,23 +33,34 @@ Vue.component ('sueldos-usuarios', {
 
     data: function () {
         return {
-            sueldoU1: "",
-            sueldoU2: "",
+            sueldoU1: "Sueldo Usuario 1",
+            sueldoU2: "Sueldo Usuario 2",
 
-            sueldos: {}
+            sueldos: {},
+
+            sueldosLocal: {}
         }
     },
 
     methods: {
         guardarSueldos () {
-            if (this.sueldoU1 != "" || this.sueldoU2 != "") {
+            if (this.sueldoU1 != "Sueldo Usuario 1" || this.sueldoU2 != "Sueldo Usuario 2") {
                 this.sueldos.sueldoU1 = this.sueldoU1;
                 this.sueldos.sueldoU2 = this.sueldoU2;
 
-                if (this.sueldos.sueldoU1 != "" && this.sueldos.sueldoU2 != "") {
+                if (this.sueldos.sueldoU1 != "Sueldo Usuario 1" && this.sueldos.sueldoU2 != "Sueldo Usuario 2") {
                     localStorage.setItem("sueldos", JSON.stringify(this.sueldos));
-                }
 
+                    this.obetenerLocalData ();
+                }
+            }
+        },
+
+        obetenerLocalData () {
+            if (localStorage.length > 0) {
+                this.sueldosLocal = JSON.parse(localStorage.getItem("sueldos"));
+
+                console.log(this.sueldosLocal);
             }
         }
     }
@@ -61,14 +84,21 @@ let app = new Vue ({
         factura: {},
 
         allFacturas: [],
+
+        sueldosLocal: {}
     },
 
     mounted () {
+        if (localStorage.length > 0) {
+            this.sueldosLocal = JSON.parse(localStorage.getItem("sueldos"));
 
-    },
-
-    updated () {
-
+            this.sueldoU1 = this.sueldosLocal.sueldoU1;
+            this.sueldoU2 = this.sueldosLocal.sueldoU2;
+            console.log(this.sueldoU1);
+            console.log(this.sueldoU2);
+        } else {
+            console.log("no hay datos");
+        }
     },
 
     methods: {
