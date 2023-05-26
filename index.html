@@ -46,9 +46,10 @@
                 <button class="separacion_contenedores" @click="agregarNueva">Agregar nueva factura</button>
     
                 <div class="separacion_contenedores">
-                    <h2>Sus facturas:</h2>
+                    <h2>Mis facturas:</h2>
     
                     <p style="margin-top: 20px;" v-if="allFacturas.length == 0">Aún no has agregado facturas.</p>
+
                     <div class="resultado_individual" v-for="i in allFacturas" v-else>
                         <div class="header_resultado">
                             <h3>{{i.razon}}</h3>
