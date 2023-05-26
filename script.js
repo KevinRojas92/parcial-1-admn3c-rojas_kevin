@@ -67,36 +67,19 @@ Vue.component ('sueldos-usuarios', {
     }
 });
 
-let app = new Vue ({
-    el: '#main',
+Vue.component ('agregar-nueva-factura', {
+    template: `
+    <button class="separacion_contenedores" @click="agregarNueva">Agregar nueva factura</button>
+    `,
 
-    data: {
-        usuario1: 'Nombre Usuario 1',
-        usuario2: 'Nombre Usuario 2',
+    props: ['modal'],
 
-        sueldoU1: "",
-        sueldoU2: "",
+    data: function () {
+        return {
+            sueldoU1: "",
+            sueldoU2: "",
 
-        modal: false,
-
-        motivo: "",
-        valor: "",
-
-        factura: {},
-
-        allFacturas: [],
-
-        sueldosLocal: {}
-    },
-
-    mounted () {
-        if (localStorage.length > 0) {
-            this.sueldosLocal = JSON.parse(localStorage.getItem("sueldos"));
-
-            this.sueldoU1 = this.sueldosLocal.sueldoU1;
-            this.sueldoU2 = this.sueldosLocal.sueldoU2;
-        } else {
-            console.log("no hay datos");
+            sueldosLocal: {}
         }
     },
 
@@ -124,7 +107,41 @@ let app = new Vue ({
                 console.log("no hay datos");
             }
         },
+    }
+});
 
+let app = new Vue ({
+    el: '#main',
+
+    data: {
+        usuario1: 'Nombre Usuario 1',
+        usuario2: 'Nombre Usuario 2',
+
+        sueldoU1: "",
+        sueldoU2: "",
+
+        modal: false,
+
+        motivo: "",
+        valor: "",
+
+        factura: {},
+
+        allFacturas: [],
+    },
+
+    mounted () {
+        if (localStorage.length > 0) {
+            this.sueldosLocal = JSON.parse(localStorage.getItem("sueldos"));
+
+            this.sueldoU1 = this.sueldosLocal.sueldoU1;
+            this.sueldoU2 = this.sueldosLocal.sueldoU2;
+        } else {
+            console.log("no hay datos");
+        }
+    },
+
+    methods: {
         agregar () {
             this.factura.razon = this.motivo;
             this.factura.precio = parseFloat(this.valor);
