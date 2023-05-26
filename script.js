@@ -23,13 +23,22 @@ Vue.component ('sueldos-usuarios', {
         return {
             sueldoU1: "",
             sueldoU2: "",
+
+            sueldos: {}
         }
     },
 
     methods: {
         guardarSueldos () {
-            console.log(this.sueldoU1);
-            console.log(this.sueldoU2);
+            if (this.sueldoU1 != "" || this.sueldoU2 != "") {
+                this.sueldos.sueldoU1 = this.sueldoU1;
+                this.sueldos.sueldoU2 = this.sueldoU2;
+
+                if (this.sueldos.sueldoU1 != "" && this.sueldos.sueldoU2 != "") {
+                    localStorage.setItem("sueldos", JSON.stringify(this.sueldos));
+                }
+
+            }
         }
     }
 });
@@ -52,30 +61,17 @@ let app = new Vue ({
         factura: {},
 
         allFacturas: [],
-
-        sueldos: {}
     },
 
     mounted () {
-        this.guardarSueldos();
+
     },
 
     updated () {
-        console.log('Se actualizó');
-        this.guardarSueldos();
+
     },
 
     methods: {
-        guardarSueldos () {
-            if (!isNaN(this.sueldoU1)) {
-                this.sueldos.usuario1 = this.sueldoU1;
-            } else if (!isNaN(this.sueldoU2)) {
-                this.sueldos.usuario2 = this.sueldoU2;
-            } else {
-                console.log('No es un número');
-            }
-        },
-
         calcularPorcentajes () {
             sueldoTotal = parseFloat(this.sueldoU1) + parseFloat(this.sueldoU2);
 
