@@ -155,6 +155,8 @@ let app = new Vue ({
             this.factura = {};
 
             console.log(this.allFacturas);
+
+            localStorage.setItem("facturas", JSON.stringify(this.allFacturas));
             this.cerrar ();
         },
 
@@ -168,6 +170,10 @@ let app = new Vue ({
 
         borrar (index) {
             this.allFacturas.splice(index, 1);
+
+            localStorage.removeItem("facturas");
+
+            localStorage.setItem("facturas", JSON.stringify(this.allFacturas));
         }
     }
 });
