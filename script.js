@@ -61,8 +61,6 @@ Vue.component ('sueldos-usuarios', {
 
                 if (this.sueldos.sueldoU1 != "Sueldo Usuario 1" && this.sueldos.sueldoU2 != "Sueldo Usuario 2") {
                     localStorage.setItem("sueldos", JSON.stringify(this.sueldos));
-
-                    this.obetenerLocalData ();
                 }
             }
         }
@@ -112,8 +110,19 @@ let app = new Vue ({
         },
 
         agregarNueva () {
-            this.modal= true;
-            this.calcularPorcentajes();
+            if (localStorage.length > 0) {
+                this.sueldosLocal = JSON.parse(localStorage.getItem("sueldos"));
+    
+                this.sueldoU1 = this.sueldosLocal.sueldoU1;
+                this.sueldoU2 = this.sueldosLocal.sueldoU2;
+
+                this.modal= true;
+
+                this.calcularPorcentajes();
+            } else {
+                alert("Recuerda que antes de agregar una nueva factura debes ingresar los sueldos de cada usuario");
+                console.log("no hay datos");
+            }
         },
 
         agregar () {
