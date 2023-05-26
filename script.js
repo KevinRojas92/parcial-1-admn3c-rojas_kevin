@@ -2,7 +2,7 @@
 
 let sueldoTotal, porcentajeSueldoU1, porcentajeSueldoU2;
 
-Vue.component ('sueldos-usuarios', {
+Vue.component ('sueldosUsuarios', {
     template: `
         <form action="" v-if="sueldoU1 =='Sueldo Usuario 1' && sueldoU2 =='Sueldo Usuario 2'">
             <div>
@@ -67,19 +67,16 @@ Vue.component ('sueldos-usuarios', {
     }
 });
 
-Vue.component ('agregar-nueva-factura', {
+Vue.component ('agregarNuevaFactura', {
     template: `
-    <button class="separacion_contenedores" @click="agregarNueva">Agregar nueva factura</button>
+        <button class="separacion_contenedores" @click="agregarNueva">Agregar nueva factura</button>
     `,
 
-    props: ['modal'],
+    props: [],
 
     data: function () {
         return {
-            sueldoU1: "",
-            sueldoU2: "",
-
-            sueldosLocal: {}
+            modal: false
         }
     },
 
@@ -99,7 +96,7 @@ Vue.component ('agregar-nueva-factura', {
                 this.sueldoU1 = this.sueldosLocal.sueldoU1;
                 this.sueldoU2 = this.sueldosLocal.sueldoU2;
 
-                this.modal= true;
+                this.cambiarModal();
 
                 this.calcularPorcentajes();
             } else {
@@ -107,6 +104,11 @@ Vue.component ('agregar-nueva-factura', {
                 console.log("no hay datos");
             }
         },
+
+        cambiarModal () {
+            this.modal = true;
+            this.$emit("mostrar-modal", this.modal);
+        }
     }
 });
 
@@ -150,8 +152,9 @@ let app = new Vue ({
 
             this.allFacturas.push(this.factura);
 
+            this.factura = {};
+
             console.log(this.allFacturas);
-            this.factura = [];
             this.cerrar ();
         },
 
@@ -159,7 +162,12 @@ let app = new Vue ({
             this.modal= false;
         },
 
-        borrar () {
+        mostrarModal () {
+            this.modal = true;
+        },
+
+        borrar (index) {
+            this.allFacturas.splice(index, 1);
         }
     }
 });
