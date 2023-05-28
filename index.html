@@ -26,12 +26,12 @@
                 <form action="">
                     <div>
                         <label for="motivo">Motivo</label>
-                        <input id="motivo" type="text" name="motivo" placeholder="motivo" v-model="motivo">
+                        <input id="motivo" type="text" name="motivo" placeholder="Motivo" v-model="motivo" @change="validacionMotivo">
                     </div>
         
                     <div style="margin-top: 25px;">
                         <label for="valor">Valor</label>
-                        <input id="valor" type="numbe" name="valor" placeholder="Valor" v-model="valor">
+                        <input id="valor" type="number" name="valor" placeholder="Valor" v-model="valor">
                     </div>
                 </form>
     
