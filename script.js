@@ -154,19 +154,29 @@ let app = new Vue ({
 
     methods: {
         agregar () {
-            this.factura.razon = this.motivo;
-            this.factura.precio = parseFloat(this.valor);
-            this.factura.precioUsuario1 = (this.factura.precio * porcentajeSueldoU1) / 100;
-            this.factura.precioUsuario2 = (this.factura.precio * porcentajeSueldoU2) / 100;
+            if (this.motivo == "" || this.valor == "") {
+                if (this.motivo == "" && this.valor == "") {
+                    alert("Por favor ingresa un motvio y un valor para esta factura");
+                } else if (this.motivo == "") {
+                    alert("Por favor ingresa un motvio para esta factura");
+                } else if (this.valor == "") {
+                    alert("Por favor ingresa un valor para esta factura");
+                }
+            } else {
+                this.factura.razon = this.motivo;
+                this.factura.precio = parseFloat(this.valor);
+                this.factura.precioUsuario1 = (this.factura.precio * porcentajeSueldoU1) / 100;
+                this.factura.precioUsuario2 = (this.factura.precio * porcentajeSueldoU2) / 100;
 
-            this.allFacturas.push(this.factura);
+                this.allFacturas.push(this.factura);
 
-            this.factura = {};
+                this.factura = {};
 
-            console.log(this.allFacturas);
+                console.log(this.allFacturas);
 
-            localStorage.setItem("facturas", JSON.stringify(this.allFacturas));
-            this.cerrar ();
+                localStorage.setItem("facturas", JSON.stringify(this.allFacturas));
+                this.cerrar ();
+            }
         },
 
         cerrar () {
