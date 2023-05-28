@@ -183,6 +183,14 @@ let app = new Vue ({
             localStorage.removeItem("facturas");
 
             localStorage.setItem("facturas", JSON.stringify(this.allFacturas));
+        },
+
+        validacionMotivo () {
+            if (!isNaN(this.motivo)) {
+                alert("Estás ingresando un número. Por favor ingresa el motivo de esta factura");
+
+                this.motivo = "";
+            }
         }
     }
 });
