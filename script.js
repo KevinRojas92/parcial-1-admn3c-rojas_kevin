@@ -165,8 +165,8 @@ let app = new Vue ({
             } else {
                 this.factura.razon = this.motivo;
                 this.factura.precio = parseFloat(this.valor);
-                this.factura.precioUsuario1 = (this.factura.precio * porcentajeSueldoU1) / 100;
-                this.factura.precioUsuario2 = (this.factura.precio * porcentajeSueldoU2) / 100;
+                this.factura.precioUsuario1 = ((this.factura.precio * porcentajeSueldoU1) / 100).toFixed(2);
+                this.factura.precioUsuario2 = ((this.factura.precio * porcentajeSueldoU2) / 100).toFixed(2);
 
                 this.allFacturas.push(this.factura);
 
